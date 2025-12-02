@@ -32,9 +32,9 @@ defaults:
 
 # Site Author
 author:
-  name:
-  picture:
-  email:
+  name: Bingchen Gong
+  picture: /images/bio-photo.jpg
+  email: gongbingchen@gmail.com
   twitter:
   links:
     - title:
@@ -58,7 +58,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 # Site owner
 owner:
   name: Bingchen Gong
-  avatar: bio-photo.jpg
+  avatar: /images/bio-photo.jpg
   email: gongbingchen@gmail.com
   disqus-shortname: wenri
   twitter: #username
