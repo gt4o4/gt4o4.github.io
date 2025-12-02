@@ -1,19 +1,13 @@
-# Sample site navigation bar links
+# Site navigation links
+
+- title: Home
+  url: /
 
 - title: About
   url: /about/
 
-- title: Articles
-  url: /articles/
-
-- title: Pages
-  url: /pages/
-
 - title: Blog
   url: https://blog.wenri.me
-
-- title: Friends
-  url: /friends/
 
 - title: Search
   url: /search/
