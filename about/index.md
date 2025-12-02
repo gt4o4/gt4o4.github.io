@@ -1,13 +1,8 @@
 ---
 layout: page
 title: About Wenri JUSHI
-excerpt: "So Simple is a responsive Jekyll theme for your words and images."
+excerpt: "About Bingchen Gong"
 modified: 2015-08-01T17:30:00+08:00
-image:
-  feature: so-simple-sample-image-4.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
-published: false
 ---
 
 I am Bingchen Gong, an undergraduate student of Zhejiang University.
