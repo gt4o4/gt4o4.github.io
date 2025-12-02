@@ -7,16 +7,44 @@
 name: Deploy Jekyll site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - master
+      - main
+    paths:
+      - "assets/**"
+      - "_sass/**"
+      - "**.html"
+      - "**.js"
+      - "**.liquid"
+      - "**/*.md"
+      - "**.yml"
+      - "Gemfile"
+      - "Gemfile.lock"
+      - "!.github/workflows/*.yml"
+      - "!README.md"
+      - "!README-OLD.md"
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - "assets/**"
+      - "_sass/**"
+      - "**.html"
+      - "**.js"
+      - "**.liquid"
+      - "**/*.md"
+      - "**.yml"
+      - "Gemfile"
+      - "Gemfile.lock"
+      - "!.github/workflows/*.yml"
+      - "!README.md"
+      - "!README-OLD.md"
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,29 +57,42 @@ concurrency:
 jobs:
   # Build job
   build:
+    # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Ruby
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
-      - name: Setup Pages
+          ruby-version: "3.3.5"
+          bundler-cache: true
+      - name: Setup Node.js 📦
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Setup Pages ⚙️
         id: pages
         uses: actions/configure-pages@v3
-      - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
+      - name: Build with Jekyll 🔧
         run: |
+          export JEKYLL_ENV=production
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-          wget --directory-prefix=./_site/.well-known/matrix https://matrix.wenri.me/.well-known/matrix/client https://matrix.wenri.me/.well-known/matrix/server
-        env:
-          JEKYLL_ENV: production
+      - name: Purge unused CSS 🧹
+        run: |
+          npm install -g purgecss
+          purgecss -c purgecss.config.js
+      # - name: Fetch well-known files 🔑
+      #   run: |
+      #     mkdir -p ./_site/.well-known/matrix
+      #     wget --directory-prefix=./_site/.well-known/matrix \
+      #       "https://matrix.wenri.me/.well-known/matrix/client" \
+      #       "https://matrix.wenri.me/.well-known/matrix/server"
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@794e304fb3768a063f373a13c21816485c0dbbdf
 
   # Deployment job
   deploy:
@@ -64,4 +105,4 @@ jobs:
       - name: Deploy to GitHub Pages
         if: github.event_name != 'pull_request'
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

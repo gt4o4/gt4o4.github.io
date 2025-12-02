@@ -3,7 +3,7 @@
 title: Wenri JUSHI
 locale: en_US
 description: IS NULL and IS NOT NULL
-logo: site-logo.png
+logo: /images/site-logo.png
 search: true
 url: http://www.wenri.me
 
