@@ -8,9 +8,9 @@
     <script src="{{ script_path }}"></script>
   {%- endfor -%}
 {%- else -%}
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous"></script>
   <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous"></script>
 {%- endif -%}
 
 {%- if jekyll.environment == 'production' and site.google_analytics -%}
@@ -28,7 +28,7 @@
 
 {% if site.mathjax == true or site.mathjax.enable == true %}
 <!-- MathJax -->
-{% capture mathjaxjs %}https://cdn.jsdelivr.net/npm/mathjax@3/es5/{{ site.mathjax.combo | default: "tex-svg" }}.js{% endcapture %}
+{% capture mathjaxjs %}https://esm.sh/mathjax@3/es5/{{ site.mathjax.combo | default: "tex-svg" }}.js{% endcapture %}
 <script>
 // http://docs.mathjax.org/en/latest/upgrading/v2.html
 MathJax = {
@@ -54,7 +54,7 @@ MathJax = {
 }
 </script>
 
-<script type="text/javascript" id="MathJax-script" async src="{{ mathjaxjs }}"></script>
+<script type="module" id="MathJax-script" async src="{{ mathjaxjs }}"></script>
 {% endif %}
 
 {%- if page.layout == "search" -%}
