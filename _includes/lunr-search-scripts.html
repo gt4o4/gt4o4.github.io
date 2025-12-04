@@ -41,13 +41,15 @@
     <script src="https://unpkg.com/lunr-languages@1.14.0/lunr.stemmer.support.min.js"></script>
     <script src="https://unpkg.com/lunr-languages@1.14.0/lunr.{{ lang }}.min.js"></script>
   {%- endunless %}
-  <script>
+  <script type="module">
+    import $ from 'jquery';
+
     var idx = lunr(function () {
       {% unless lang == "en" %}
         // use the language
         this.use(lunr.{{ lang }});
       {% endunless %}
-      // the, the normal lunr index initialization
+      // the normal lunr index initialization
       this.field('title')
       this.field('excerpt')
       this.field('categories')
@@ -67,8 +69,6 @@
         })
       }
     });
-
-    console.log(jQuery.type(idx));
 
     $(document).ready(function () {
       $('input#search').on('keyup', function () {

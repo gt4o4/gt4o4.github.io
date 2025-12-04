@@ -8,9 +8,22 @@
     <script src="{{ script_path }}"></script>
   {%- endfor -%}
 {%- else -%}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous"></script>
-  <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+  <!-- Import map: central registry for ES module URLs -->
+  <script type="importmap">
+  {
+    "imports": {
+      "jquery": "https://esm.sh/jquery@3.7.1",
+      "lity": "https://esm.sh/gh/jsor/lity",
+      "jquery-smooth-scroll": "https://esm.sh/jquery-smooth-scroll@2.2.0"
+    }
+  }
+  </script>
+  <!-- Font Awesome -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous"></script>
+  <!-- Table of Contents toggle (vanilla JS, no jQuery needed) -->
+  <script src="{{ '/assets/js/plugins/table-of-contents.js' | relative_url }}"></script>
+  <!-- Main site JS (ES module) -->
+  <script type="module" src="{{ '/assets/js/main.js' | relative_url }}"></script>
 {%- endif -%}
 
 {%- if jekyll.environment == 'production' and site.google_analytics -%}

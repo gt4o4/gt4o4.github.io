@@ -1,3 +1,7 @@
+import $ from 'jquery';
+import 'lity';
+import 'jquery-smooth-scroll';
+
 $(document).ready(function() {
   // main menu toggle
   var toggleButton = document.getElementById("menu-toggle");
