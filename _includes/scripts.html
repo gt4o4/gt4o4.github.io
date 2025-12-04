@@ -1,3 +1,13 @@
+<!-- Import map: central registry for ES module URLs (must be before any module scripts) -->
+<script type="importmap">
+{
+  "imports": {
+    "jquery": "https://esm.sh/jquery@3.7.1",
+    "lity": "https://esm.sh/gh/jsor/lity",
+    "jquery-smooth-scroll": "https://esm.sh/jquery-smooth-scroll@2.2.0"
+  }
+}
+</script>
 {%- if site.footer_scripts -%}
   {%- for script in site.footer_scripts -%}
     {%- if script contains "://" -%}
@@ -8,20 +18,10 @@
     <script src="{{ script_path }}"></script>
   {%- endfor -%}
 {%- else -%}
-  <!-- Import map: central registry for ES module URLs -->
-  <script type="importmap">
-  {
-    "imports": {
-      "jquery": "https://esm.sh/jquery@3.7.1",
-      "lity": "https://esm.sh/gh/jsor/lity",
-      "jquery-smooth-scroll": "https://esm.sh/jquery-smooth-scroll@2.2.0"
-    }
-  }
-  </script>
   <!-- Font Awesome -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous"></script>
-  <!-- Table of Contents toggle (vanilla JS, no jQuery needed) -->
-  <script src="{{ '/assets/js/plugins/table-of-contents.js' | relative_url }}"></script>
+  <!-- Table of Contents toggle (ES module) -->
+  <script type="module" src="{{ '/assets/js/plugins/table-of-contents.js' | relative_url }}"></script>
   <!-- Main site JS (ES module) -->
   <script type="module" src="{{ '/assets/js/main.js' | relative_url }}"></script>
 {%- endif -%}
