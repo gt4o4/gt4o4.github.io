@@ -27,7 +27,7 @@ There are **no test or lint steps**. CI is Ruby 3.3.5 / Node 20.
 
 **JS is loaded as native ES modules via an import map — there is no bundler step.** `_includes/scripts.html` declares an `<script type="importmap">` mapping bare specifiers (`jquery`, `lity`, `jquery-smooth-scroll`) to **esm.sh** CDN URLs, then loads `assets/js/main.js` and `assets/js/plugins/table-of-contents.js` as `<script type="module">`. Those source files `import` the mapped specifiers directly. To add/change a JS dependency, edit the import map, not a build config.
 
-**The old npm/uglify build pipeline is dead — do not run it.** `package.json`'s `build:js`/`uglify` scripts and `banner.js` reference `assets/js/plugins/lity.js`, `jquery.smooth-scroll.js`, and `main.min.js`, none of which still exist (only `table-of-contents.js` remains in `plugins/`). Nothing in the templates references `main.min.js`. Ignore these; the import-map setup replaced them.
+**There is no JS build/bundler step.** JS ships as native ES modules via the import map above — no minifier, no `npm` build. The old uglify/`npm-run-all` pipeline (`package.json`, `package-lock.json`, `banner.js`, and the minified `main.min.js`) was removed once the import map replaced it. To add or change a JS dependency, edit the import map — don't reintroduce a bundler.
 
 **All third-party libs come from privacy-friendly CDNs — nothing is vendored.** esm.sh (jQuery, Lity, smooth-scroll, MathJax), fonts.bunny.net (web fonts, in `_includes/head.html` — replaces Google Fonts), cdnjs (Font Awesome, lunr.js), unpkg (lunr-languages). There are no local copies of these libraries.
 
