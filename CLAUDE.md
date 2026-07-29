@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A personal Jekyll blog ("Wenri JUSHI" by Bingchen Gong), deployed to GitHub Pages at **www.wenri.me** (see `CNAME`). It is a **fork of the "So Simple" theme v3.2.0** by Michael Rose, with the theme files vendored directly into the repo (no `remote_theme`/gem install — `_layouts`, `_includes`, `_sass`, `assets` are all local and edited in place).
+A personal Jekyll blog ("Wenri JUSHI" by Bingchen Gong), deployed to GitHub Pages at **wenri.me** (the custom domain lives in the repo's Pages settings; `CNAME` mirrors it but is inert under Actions-based deploys). It is a **fork of the "So Simple" theme v3.2.0** by Michael Rose, with the theme files vendored directly into the repo (no `remote_theme`/gem install — `_layouts`, `_includes`, `_sass`, `assets` are all local and edited in place).
 
 The repo root is simultaneously the theme source *and* the site source. Most of the prose blog content actually lives at the external site **s2.hk**; this repo is the landing page, `about/`, `search/`, and a single welcome post.
 

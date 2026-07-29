@@ -1,6 +1,6 @@
 # Wenri JUSHI
 
-Personal blog of Bingchen Gong — published at **[www.wenri.me](http://www.wenri.me)**.
+Personal blog of Bingchen Gong — published at **[wenri.me](https://wenri.me)**.
 
 Built with [Jekyll](https://jekyllrb.com/) on a customized fork of the [So Simple](https://github.com/mmistakes/so-simple-theme) theme, and deployed to GitHub Pages. Longer-form writing lives at **[s2.hk](https://s2.hk)**.
 
