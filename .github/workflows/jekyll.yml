@@ -9,7 +9,6 @@ name: Deploy Jekyll site to Pages
 on:
   push:
     branches:
-      - master
       - main
     paths:
       - "assets/**"
@@ -26,7 +25,6 @@ on:
       - "!README-OLD.md"
   pull_request:
     branches:
-      - master
       - main
     paths:
       - "assets/**"
@@ -62,17 +60,15 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
-        with:
-          lfs: true
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          ruby-version: "4.0.3"
           bundler-cache: true
       - name: Setup Node.js 📦
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
       - name: Setup Pages ⚙️
         id: pages
         uses: actions/configure-pages@v3
@@ -84,12 +80,6 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
-      # - name: Fetch well-known files 🔑
-      #   run: |
-      #     mkdir -p ./_site/.well-known/matrix
-      #     wget --directory-prefix=./_site/.well-known/matrix \
-      #       "https://matrix.wenri.me/.well-known/matrix/client" \
-      #       "https://matrix.wenri.me/.well-known/matrix/server"
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@794e304fb3768a063f373a13c21816485c0dbbdf

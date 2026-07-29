@@ -15,10 +15,9 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-paginate
 
 # Front Matter Defaults
 defaults:
@@ -35,11 +34,6 @@ author:
   name: Bingchen Gong
   picture: /images/bio-photo.jpg
   email: gongbingchen@gmail.com
-  twitter:
-  links:
-    - title:
-      url:
-      icon:
 
 kramdown:
   input: GFM
@@ -47,34 +41,13 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..2
-  enable_coderay: false
 
 mathjax: true
 
-include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", ".less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "README-OLD.md", "CLAUDE.md", "vendor", "docs/", "example/", "Makefile", "nix/", "purgecss.config.js", "CHANGELOG.md", "jekyll-theme-so-simple.gemspec", "screenshot.png", "screenshots.jpg"]
 
 
-# Site owner
+# Google Search Console verification (read by _includes/head.html)
 owner:
-  name: Bingchen Gong
-  avatar: /images/bio-photo.jpg
-  email: gongbingchen@gmail.com
-  disqus-shortname: wenri
-  twitter: #username
-  facebook: #username
-  github: #username
-  stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
-  instagram: #username
-  flickr: #username
-  tumblr: #username
-  pinterest: #username
-  weibo: #userid
   google:
-    plus: BingchenGONG
-    analytics:
     verify: u_1Nws5Od0iERZ_5888ZipSeGSeggEFb3QIC8RvFpKM
-    ad-client:
-    ad-slot:
-  bing-verify:

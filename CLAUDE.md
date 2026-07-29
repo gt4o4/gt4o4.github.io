@@ -17,11 +17,11 @@ JEKYLL_ENV=production bundle exec jekyll build   # production build into _site/ 
 purgecss -c purgecss.config.js              # strip unused CSS from _site/ (CI step; run after a build)
 ```
 
-There are **no test or lint steps**. CI is Ruby 3.3.5 / Node 20.
+There are **no test or lint steps**. CI is Ruby 4.0.3 / Node 22, matching the local nix toolchain (see `Makefile` / `nix/shell.nix`).
 
 ### Deployment
 
-`.github/workflows/jekyll.yml` auto-deploys on push to `main` (or `master`): Jekyll production build → PurgeCSS → GitHub Pages. The default branch is `main`; open PRs against `main`.
+`.github/workflows/jekyll.yml` auto-deploys on push to `main`: Jekyll production build → PurgeCSS → GitHub Pages. The default branch is `main`; open PRs against `main`.
 
 ## Architecture notes that aren't obvious from a single file
 
@@ -49,5 +49,5 @@ There are **no test or lint steps**. CI is Ruby 3.3.5 / Node 20.
 
 ## Config gotchas
 
-- `_config.yml` mixes the theme's v3 `author:` block with a legacy v2 `owner:` block. Some legacy keys don't map to the current includes — e.g. the Disqus include reads `site.disqus.shortname`, but the config only defines `owner.disqus-shortname`, so comments aren't actually wired up. Don't assume an `owner.*` value is live; check the include that consumes it.
-- Plugins are listed under the deprecated `gems:` key (jekyll-sitemap, jekyll-feed, jekyll-paginate). Analytics and Disqus only render when `JEKYLL_ENV=production`.
+- The legacy v2 `owner:` block is trimmed to its one live key: `owner.google.verify` (Google site verification, read by `_includes/head.html`). Dormant hooks that exist in the includes but have no config value: Disqus comments (`site.disqus.shortname`, used by `_layouts/post.html`), Google Analytics (`site.google_analytics`, production-only, in `_includes/scripts.html`), and Bing verification (`site.owner.bing-verify`, in `head.html`). Set the key to activate the hook.
+- `plugins:` enables jekyll-sitemap and jekyll-feed, so `sitemap.xml` and `feed.xml` are generated (`head.html` emits the matching feed `<link>`). jekyll-paginate is a gemspec dependency but deliberately not enabled — nothing sets `paginate:` or `page.paginate`; the homepage uses `posts-limit.html` (`limit: 10` in `index.md`).
