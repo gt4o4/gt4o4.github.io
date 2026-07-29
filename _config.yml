@@ -35,6 +35,30 @@ author:
   picture: /images/bio-photo.jpg
   email: gongbingchen@gmail.com
 
+# Footer social icons (rendered by _includes/footer.html; FA 6 icon classes)
+footer_links:
+  - title: GitHub
+    url: https://github.com/Wenri
+    icon: fab fa-github
+  - title: GitLab
+    url: https://gitlab.com/gt404
+    icon: fab fa-gitlab
+  - title: Google Scholar
+    url: https://scholar.google.com/citations?user=A84X-3IAAAAJ
+    icon: fas fa-graduation-cap
+  - title: ORCID
+    url: https://orcid.org/0000-0001-6459-6972
+    icon: fab fa-orcid
+  - title: LinkedIn
+    url: https://www.linkedin.com/in/wenri
+    icon: fab fa-linkedin
+  - title: Bluesky
+    url: https://bsky.app/profile/s2.hk
+    icon: fab fa-bluesky
+  - title: Keybase
+    url: https://keybase.io/wenri
+    icon: fab fa-keybase
+
 kramdown:
   input: GFM
   auto_ids: true

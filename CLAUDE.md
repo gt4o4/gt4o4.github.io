@@ -41,7 +41,7 @@ There are **no test or lint steps**. CI is Ruby 4.0.3 / Node 22, matching the lo
 
 - Posts go in `_posts/` as `YYYY-MM-DD-title.md`. Front-matter defaults (`layout: post`, `share: true`) are set in `_config.yml`, so a post only needs `title`/`excerpt`/`date`.
 - Permalinks are `/:categories/:title/`. Markdown is kramdown (GFM input) with Rouge highlighting; auto-generated heading IDs and TOC (`toc_levels: 1..2`).
-- Top-nav links are in `_data/navigation.yml`; author info in `_config.yml` and `_data/authors.yml`.
+- Top-nav links are in `_data/navigation.yml`; author info in `_config.yml` (`author:` block), footer social icons under `footer_links:` (note: entries need a `://` URL — `mailto:` would get mangled by `relative_url` in `_includes/footer.html`).
 
 ## Upstream-theme artifacts — not part of this blog
 
