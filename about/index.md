@@ -5,7 +5,7 @@ excerpt: "About Bingchen Gong"
 modified: 2026-07-30
 ---
 
-I am Bingchen Gong (鞏炳辰 | 巩炳辰 | gǒng bǐng chén). I earned my PhD from [HKU](https://www.hku.hk/) under the supervision of [Prof. Yizhou YU](https://www.cs.hku.hk/people/academic-staff/yzyu), then continued my academic career at [CUHK](https://www.cuhk.edu.hk/), where I worked under the guidance of [Prof. Dou Qi](https://www.cse.cuhk.edu.hk/people/faculty/qi-dou/). I am currently a postdoctoral researcher at [LIX](https://www.lix.polytechnique.fr/), [École Polytechnique](https://www.polytechnique.edu/) with [Maks Ovsjanikov](https://www.lix.polytechnique.fr/~maks/).
+I am Bingchen Gong. I earned my PhD from [HKU](https://www.hku.hk/) under the supervision of [Prof. Yizhou YU](https://www.cs.hku.hk/people/academic-staff/yzyu), then continued my academic career at [CUHK](https://www.cuhk.edu.hk/), where I worked under the guidance of [Prof. Dou Qi](https://www.cse.cuhk.edu.hk/people/faculty/qi-dou/). I am currently a postdoctoral researcher at [LIX](https://www.lix.polytechnique.fr/), [École Polytechnique](https://www.polytechnique.edu/) with [Maks Ovsjanikov](https://www.lix.polytechnique.fr/~maks/).
 
 ## Research
 
