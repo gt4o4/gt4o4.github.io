@@ -87,6 +87,10 @@ $main-max-width: $medium !default;
 /* Max-width of the main content + sidebar */
 $main-sidebar-max-width: $large !default;
 
+/* Reading measure for running text. In ch so the character count holds as the
+   root font size scales fluidly (16px → 18px) — a px cap would drift. */
+$reading-measure: 68ch !default;
+
 /* Site logo */
 $site-logo-width: 75px !default;
 $site-logo-height: 75px !default;

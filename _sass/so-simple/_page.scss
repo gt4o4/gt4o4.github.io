@@ -209,12 +209,44 @@
 .layout--tag,
 .layout--collection,
 .layout--search {
+  .page-title {
+    text-align: center;
+  }
+}
+
+// The home layout is deliberately absent here: it shares the default
+// $main-sidebar-max-width so the container doesn't jump width when a reader
+// clicks through to a post. Running text is held to a readable measure by
+// $reading-measure below instead of by squeezing the whole page.
+.layout--posts,
+.layout--categories,
+.layout--tags,
+.layout--category,
+.layout--tag,
+.layout--collection,
+.layout--search {
   .page-wrapper {
     max-width: $main-max-width;
   }
+}
 
-  .page-title {
-    text-align: center;
+/*
+   Reading measure
+   ========================================================================== */
+
+// Cap running text near $reading-measure characters independently of the
+// container, so tables, code blocks and images keep the full column width
+// while prose stays readable. `.page-content >` covers the page layout,
+// `.e-content >` the post layout, `.entry-excerpt >` the homepage listing.
+.page-content,
+.e-content,
+.entry-excerpt {
+  > p,
+  > ul,
+  > ol,
+  > dl,
+  > blockquote {
+    max-width: $reading-measure;
   }
 }
 

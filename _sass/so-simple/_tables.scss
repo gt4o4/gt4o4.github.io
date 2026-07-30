@@ -6,10 +6,11 @@ table {
   @include fluid-type($min-vw, $max-vw, 12px, 18px);
   width: 100%;
   border-collapse: collapse;
-  /* For Firefox to horizontally scroll wider tables */
-  // scss-lint:disable DuplicateProperty
+  // Upstream set `word-break: keep-all` intending wide tables to scroll, but
+  // nothing here sets overflow, so its only effect was suppressing CJK line
+  // breaking — which overflows the table on Chinese cells instead of wrapping.
   word-break: normal;
-  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 th,
