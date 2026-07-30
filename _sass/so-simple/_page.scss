@@ -216,8 +216,8 @@
 
 // The home layout is deliberately absent here: it shares the default
 // $main-sidebar-max-width so the container doesn't jump width when a reader
-// clicks through to a post. Running text is held to a readable measure by
-// $reading-measure below instead of by squeezing the whole page.
+// clicks through to a post. (A 68ch reading-measure cap on prose was tried
+// and reverted: it left text blocks visibly off-center in the container.)
 .layout--posts,
 .layout--categories,
 .layout--tags,
@@ -227,26 +227,6 @@
 .layout--search {
   .page-wrapper {
     max-width: $main-max-width;
-  }
-}
-
-/*
-   Reading measure
-   ========================================================================== */
-
-// Cap running text near $reading-measure characters independently of the
-// container, so tables, code blocks and images keep the full column width
-// while prose stays readable. `.page-content >` covers the page layout,
-// `.e-content >` the post layout, `.entry-excerpt >` the homepage listing.
-.page-content,
-.e-content,
-.entry-excerpt {
-  > p,
-  > ul,
-  > ol,
-  > dl,
-  > blockquote {
-    max-width: $reading-measure;
   }
 }
 
