@@ -8,6 +8,22 @@ Everything I run — servers, workstations, a laptop, a WSL install, and the And
 
 This post is a tour of that repo. Not the tidy version — the interesting parts are all the places where the general mechanism didn't fit and something had to be built.
 
+## Public entrypoints
+
+Before the internals, the parts you can actually visit. Everything below is public by design:
+
+| Entrypoint | What it is |
+|---|---|
+| [wenri.me](https://wenri.me) | This blog. Jekyll, built and deployed by GitHub Actions to Pages. |
+| [s2.hk](https://s2.hk) | My academic site — publications, CV, news. |
+| [matrix.s2.hk](https://matrix.s2.hk) | Matrix homeserver, federating as `s2.hk`. Synapse behind Traefik. |
+| [b3.hk](https://b3.hk) | Self-hosted Bluesky PDS. It's the personal data server behind my `s2.hk` Bluesky handle. |
+| [deb.s2.hk](https://deb.s2.hk) | A signed apt repository for vendor `.deb`s that ship no repo of their own — metadata only, pointing at upstream download URLs. |
+
+Most of those share a single small container in Paris, which also runs the Grafana that watches them.
+
+Everything *else* — SSH, the build and workspace tooling, the machine dashboards, my notes — reaches the internet only through Cloudflare tunnels with Access in front, so there's no listening port to publish and nothing useful to index here. That asymmetry is deliberate, and it's most of the reason the rest of this post is about tunnels, meshes and grafting rather than virtual hosts.
+
 ## The fleet
 
 By type, as the flake partitions them:
