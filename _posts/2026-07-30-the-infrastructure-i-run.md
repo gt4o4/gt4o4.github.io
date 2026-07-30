@@ -10,19 +10,32 @@ This post is a tour of that repo. Not the tidy version — the interesting parts
 
 ## Public entrypoints
 
-Before the internals, the parts you can actually visit. Everything below is public by design:
+Before the internals, the parts that answer on a public name.
+
+Open to anyone:
 
 | Entrypoint | What it is |
 |---|---|
 | [wenri.me](https://wenri.me) | This blog. Jekyll, built and deployed by GitHub Actions to Pages. |
 | [s2.hk](https://s2.hk) | My academic site — publications, CV, news. |
 | [matrix.s2.hk](https://matrix.s2.hk) | Matrix homeserver, federating as `s2.hk`. Synapse behind Traefik. |
+| [element.s2.hk](https://element.s2.hk) | Element — the web client for that homeserver. |
 | [b3.hk](https://b3.hk) | Self-hosted Bluesky PDS. It's the personal data server behind my `s2.hk` Bluesky handle. |
 | [deb.s2.hk](https://deb.s2.hk) | A signed apt repository for vendor `.deb`s that ship no repo of their own — metadata only, pointing at upstream download URLs. |
 
-Most of those share a single small container in Paris, which also runs the Grafana that watches them.
+Sign-in required — listed because a service you can't find is not a service you've secured:
 
-Everything *else* — SSH, the build and workspace tooling, the machine dashboards, my notes — reaches the internet only through Cloudflare tunnels with Access in front, so there's no listening port to publish and nothing useful to index here. That asymmetry is deliberate, and it's most of the reason the rest of this post is about tunnels, meshes and grafting rather than virtual hosts.
+| Entrypoint | What it is |
+|---|---|
+| [c.s2.hk](https://c.s2.hk) | Coder. The control plane for my dev workspaces; the machines that actually run them are elsewhere in this post. |
+| [nm.wenri.org](https://nm.wenri.org) | Netmaker. The dashboard for the mesh VPN that connects the fleet. |
+| [portainer.s2.hk](https://portainer.s2.hk) | Portainer, for the container stack on the host below. |
+| [karakeep.s2.hk](https://karakeep.s2.hk) | Karakeep — bookmarks and read-later, self-hosted. |
+| [stats.s2.hk](https://stats.s2.hk) | Grafana, watching everything else. |
+
+Nearly all of that shares a single small container in Paris, which is a slightly absurd amount of load for an OpenVZ guest on a 3.10 kernel and works fine.
+
+What's *not* in either table is the shell access: SSH to every host in the fleet reaches the internet only through Cloudflare tunnels, so there is no listening port to publish in the first place. That asymmetry is deliberate, and it's most of the reason the rest of this post is about tunnels, meshes and grafting rather than virtual hosts.
 
 ## The fleet
 
