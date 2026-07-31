@@ -20,7 +20,12 @@ PORT ?= 4000
 
 BUILD_ENV := LC_ALL=C.UTF-8 LANG=C.UTF-8
 
-NIX_SHELL = nix-shell nix/shell.nix --argstr rubyAttr $(RUBY)
+# Evaluated from the host-config dir: the flake's relative
+# `git+file:./submodules/secrets` input resolves against the process CWD
+# (nix#12281), so a fresh evaluation launched from this repo can't find
+# it (bit the main site 2026-07-30 after a host-config merge invalidated
+# the eval cache).  Each --run command cds back to the repo.
+NIX_SHELL = cd $(HOME)/.config/nix-on-droid && nix-shell $(CURDIR)/nix/shell.nix --argstr rubyAttr $(RUBY)
 
 .DEFAULT_GOAL := build
 .PHONY: help deps build purge serve clean distclean
@@ -30,16 +35,16 @@ help: ## Show this help
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
 deps: ## Install/refresh the gem bundle
-	$(NIX_SHELL) --run 'bundle install'
+	$(NIX_SHELL) --run 'cd $(CURDIR) && bundle install'
 
 build: ## Production build into _site/ (JEKYLL_ENV=production, like CI)
-	$(NIX_SHELL) --run '$(BUILD_ENV) JEKYLL_ENV=production bundle exec jekyll build'
+	$(NIX_SHELL) --run 'cd $(CURDIR) && $(BUILD_ENV) JEKYLL_ENV=production bundle exec jekyll build'
 
 purge: build ## Build, then strip unused CSS from _site/ (CI's PurgeCSS step; uses system node)
 	npx --yes purgecss -c purgecss.config.js
 
 serve: ## Serve at http://127.0.0.1:4000/ (HOST=/PORT= to override; polling watcher — inotify is dead on FUSE)
-	$(NIX_SHELL) --run '$(BUILD_ENV) bundle exec jekyll serve --host $(HOST) --port $(PORT) --force_polling'
+	$(NIX_SHELL) --run 'cd $(CURDIR) && $(BUILD_ENV) bundle exec jekyll serve --host $(HOST) --port $(PORT) --force_polling'
 
 clean: ## Remove generated site and build caches
 	rm -rf _site .jekyll-cache
