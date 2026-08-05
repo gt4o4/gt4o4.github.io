@@ -2,7 +2,7 @@
 #
 # The toolchain comes from the Android host's own nix configuration:
 # nix/pkgs.nix imports the flake at ~/.config/nix-on-droid and mirrors
-# its package set (nixpkgs-25_11 pin — glibc 2.40 to match the device's
+# its package set (nixpkgs-26_05 pin — glibc 2.42 to match the device's
 # Android-patched glibc — plus its overlay stack); nix/shell.nix
 # assembles the build shell from it.
 #

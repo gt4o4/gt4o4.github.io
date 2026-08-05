@@ -5,7 +5,7 @@
 # exposes:
 #
 #   pkgs  — the exact package set the system is built from
-#           (nixpkgs-25_11 pin: glibc 2.40 to match the Android-patched
+#           (nixpkgs-26_05 pin: glibc 2.42 to match the Android-patched
 #           glibc, plus the full overlay stack from common/factory.nix)
 #   graft — config.build.replaceAndroidDependencies: the NixOS-style
 #           grafting used at `nix-on-droid switch` time (patchnar rewrites
