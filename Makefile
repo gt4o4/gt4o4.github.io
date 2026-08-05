@@ -12,7 +12,7 @@
 # Gemfile.lock is gitignored in this repo (theme-repo convention), so
 # the bundle is not frozen — `make deps` resolves it fresh.
 # CI has its own path and does not use this file
-# (.github/workflows/jekyll.yml: Ruby 4.0.3 build + PurgeCSS + Pages).
+# (.github/workflows/jekyll.yml: Ruby 4.0.5 build + PurgeCSS + Pages).
 
 RUBY ?= ruby_4_0
 HOST ?= 127.0.0.1

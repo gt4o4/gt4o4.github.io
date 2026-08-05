@@ -17,7 +17,7 @@ JEKYLL_ENV=production bundle exec jekyll build   # production build into _site/ 
 purgecss -c purgecss.config.js              # strip unused CSS from _site/ (CI step; run after a build)
 ```
 
-There are **no test or lint steps**. CI is Ruby 4.0.3 / Node 22, matching the local nix toolchain (see `Makefile` / `nix/shell.nix`).
+There are **no test or lint steps**. CI is Ruby 4.0.5 / Node 24, matching the local nix toolchain (see `Makefile` / `nix/shell.nix`).
 
 ### Deployment
 
