@@ -2,14 +2,16 @@
 layout: page
 title: About Wenri JUSHI
 excerpt: "About Bingchen Gong"
-modified: 2026-07-30
+modified: 2026-09-12
 ---
 
 I am Bingchen Gong. I earned my PhD from [HKU](https://www.hku.hk/) under the supervision of [Prof. Yizhou YU](https://www.cs.hku.hk/people/academic-staff/yzyu), then continued my academic career at [CUHK](https://www.cuhk.edu.hk/), where I worked under the guidance of [Prof. Dou Qi](https://www.cse.cuhk.edu.hk/people/faculty/qi-dou/). I am currently a postdoctoral researcher at [LIX](https://www.lix.polytechnique.fr/), [École Polytechnique](https://www.polytechnique.edu/) with [Maks Ovsjanikov](https://www.lix.polytechnique.fr/~maks/).
 
 ## Research
 
-Over the past few years, my concentration has centered around computer vision and graphics, with a primary focus on leveraging deep learning techniques. I am intrigued by the exploration of various representations for visual data, encompassing not only images but also 3D environments. My thesis delved into generative models of point clouds and super-resolution; however, my current endeavors are predominantly geared towards NeRF-related tasks.
+Over the past few years, my work has centered on computer vision and graphics with deep learning, and on the representations we use for visual data, from images and video to 3D scenes. My thesis dealt with generative models of point clouds and super-resolution. Today I work on 3D Gaussian Splatting and the surfaces that can be extracted from it, on what vision-language models know about 3D geometry, and on turning video into animatable, efficient 3D content.
+
+Recent results include MILo (ACM Transactions on Graphics, SIGGRAPH Asia 2025), ZeroKey (ICCV 2025), PatchAlign3D (CVPR 2026), From Blobs to Spokes (ECCV 2026) and the 3DHarnessBench benchmark for agentic 3D-to-code with vision-language models.
 
 For publications, news, and my CV, see my academic portfolio at [s2.hk](https://s2.hk).
 
