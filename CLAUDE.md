@@ -4,9 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A personal Jekyll blog ("Wenri JUSHI" by Bingchen Gong), deployed to GitHub Pages at **wenri.me** (the custom domain lives in the repo's Pages settings; `CNAME` mirrors it but is inert under Actions-based deploys). It is a **fork of the "So Simple" theme v3.2.0** by Michael Rose, with the theme files vendored directly into the repo (no `remote_theme`/gem install — `_layouts`, `_includes`, `_sass`, `assets` are all local and edited in place).
+A personal Jekyll blog by **Wenri JUSHI**, deployed to GitHub Pages at **wenri.me** (the custom domain lives in the repo's Pages settings; `CNAME` mirrors it but is inert under Actions-based deploys). It is a **fork of the "So Simple" theme v3.2.0** by Michael Rose, with the theme files vendored directly into the repo (no `remote_theme`/gem install — `_layouts`, `_includes`, `_sass`, `assets` are all local and edited in place).
 
-The repo root is simultaneously the theme source *and* the site source. Most of the prose blog content actually lives at the external site **s2.hk**; this repo is the landing page, `about/`, `search/`, and a single welcome post.
+The repo root is simultaneously the theme source *and* the site source. It contains the landing page, `about/`, `search/`, a welcome post, and technical posts about systems and self-hosting.
+
+## Public identity
+
+Use **Wenri JUSHI** in public copy, author metadata, feeds, and repository descriptions. Keep the blog separate from any real-name or academic identity: do not add personal email addresses, academic biographies, publication lists, or profile links that explicitly connect them. Technical writing and indirect similarities are acceptable; the intent is to avoid an explicit association.
+
+The Portfolio link defaults to this blog's homepage. `assets/js/portfolio.js` verifies the referring origin against a SHA-256 digest and remembers a verified origin in `localStorage`. Preserve that behavior and keep the return address out of public source text.
 
 ## Commands
 

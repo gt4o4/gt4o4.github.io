@@ -6,34 +6,33 @@ date: 2026-07-30 00:05:00 +0000
 
 Everything I run — servers, workstations, a laptop, a WSL install, and the Android phone in my pocket — is described by a single Nix flake. Twenty-one hosts, one `hosts/default.nix` listing them, one `common/` directory holding everything they share. `make switch HOST=<name>` and the machine converges on what the repo says it should be.
 
-This post is the overview: what's running, where you can reach it, and how the fleet is shaped. The parts that need real room to explain have their own posts, indexed at the bottom.
+This post is the overview: what's running and how the fleet is shaped. The parts that need real room to explain have their own posts, indexed at the bottom.
 
-## Public entrypoints
+## Services
 
-Before the internals, the parts that answer on a public name.
+Before the internals, the services the fleet runs.
 
 Open to anyone:
 
-| Entrypoint | What it is |
+| Service | Function |
 |---|---|
-| [wenri.me](https://wenri.me) | This blog. Jekyll, built and deployed by GitHub Actions to Pages. |
-| [s2.hk](https://s2.hk) | My academic site — publications, CV, news. |
-| [matrix.s2.hk](https://matrix.s2.hk) | Matrix homeserver, federating as `s2.hk`. Synapse behind Traefik. |
-| [element.s2.hk](https://element.s2.hk) | Element — the web client for that homeserver. |
-| [b3.hk](https://b3.hk) | Self-hosted Bluesky PDS. It's the personal data server behind my `s2.hk` Bluesky handle. |
-| [deb.s2.hk](https://deb.s2.hk) | A signed apt repository for vendor `.deb`s that ship no repo of their own — metadata only, pointing at upstream download URLs. |
+| Blog | Jekyll, built and deployed by GitHub Actions to Pages. |
+| Matrix homeserver | Federated messaging with Synapse behind Traefik. |
+| Element | The web client for the Matrix homeserver. |
+| Bluesky PDS | A self-hosted personal data server. |
+| Signed apt repository | Vendor `.deb`s that ship no repo of their own — metadata only, pointing at upstream download URLs. |
 
-Sign-in required — listed because a service you can't find is not a service you've secured:
+Sign-in required:
 
-| Entrypoint | What it is |
+| Service | Function |
 |---|---|
-| [c.s2.hk](https://c.s2.hk) | Coder. The control plane for my dev workspaces; the machines that actually run them are elsewhere in the fleet. |
-| [nm.wenri.org](https://nm.wenri.org) | Netmaker. The dashboard for the mesh VPN that connects the fleet. |
-| [portainer.s2.hk](https://portainer.s2.hk) | Portainer, for the container stack on the host below. |
-| [karakeep.s2.hk](https://karakeep.s2.hk) | Karakeep — bookmarks and read-later, self-hosted. |
-| [stats.s2.hk](https://stats.s2.hk) | Grafana, watching everything else. |
+| Coder | The control plane for my dev workspaces; the machines that actually run them are elsewhere in the fleet. |
+| Netmaker | The dashboard for the mesh VPN that connects the fleet. |
+| Portainer | Management for the container stack on the host below. |
+| Karakeep | Bookmarks and read-later, self-hosted. |
+| Grafana | Monitoring the fleet. |
 
-Nearly all of that shares a single small container in Paris, which is a slightly absurd amount of load for an OpenVZ guest on a 3.10 kernel and works fine.
+Nearly all of that shares a single small container, which is a slightly absurd amount of load for an OpenVZ guest on a 3.10 kernel and works fine.
 
 What's *not* in either table is the shell access: SSH to every host in the fleet reaches the internet only through Cloudflare tunnels, so there is no listening port to publish in the first place. That asymmetry is deliberate — the interesting engineering in this setup is in tunnels, meshes and grafting rather than virtual hosts.
 
@@ -67,7 +66,7 @@ Still to write: the cross-border connectivity layer — mesh VPN, reverse tunnel
 
 The thing I'd most want to convey isn't any single mechanism. It's a habit: in this repo, comments don't say what the code does. They say what broke.
 
-> matxs-hkg demonstrated exactly this ("Failed to open …/nix-daemon.socket" three seconds before nix.mount).
+> [host] demonstrated exactly this ("Failed to open …/nix-daemon.socket" three seconds before nix.mount).
 
 > 1690/1693 bin-farm symlinks are 60–90 B targets.
 
