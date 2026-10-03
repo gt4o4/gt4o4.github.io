@@ -26,6 +26,9 @@
   <script type="module" src="{{ '/assets/js/main.js' | relative_url }}"></script>
 {%- endif -%}
 
+<!-- Remember visitors arriving from the portfolio, independently of CDN scripts. -->
+<script type="module" src="{{ '/assets/js/portfolio.js' | relative_url }}"></script>
+
 {%- if jekyll.environment == 'production' and site.google_analytics -%}
   <script>
   if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
